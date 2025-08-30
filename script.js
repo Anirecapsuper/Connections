@@ -122,28 +122,41 @@ function initParallaxEffect() {
   window.addEventListener('scroll', requestTick, { passive: true });
 }
 
-// Mouse interaction effects
+// Mouse interaction effects (hover only)
 function initMouseEffects() {
+  const avatar = document.querySelector('.teto-avatar');
+  let isHovering = false;
   let mouseX = 0;
   let mouseY = 0;
   let targetX = 0;
   let targetY = 0;
   
   function updateMousePosition(e) {
-    mouseX = e.clientX / window.innerWidth;
-    mouseY = e.clientY / window.innerHeight;
-    targetX = (mouseX - 0.5) * 8; // Reduced intensity
-    targetY = (mouseY - 0.5) * 8;
+    if (!isHovering) return;
+    
+    const rect = avatar.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Calculate relative position to avatar center
+    const relativeX = (e.clientX - centerX) / rect.width;
+    const relativeY = (e.clientY - centerY) / rect.height;
+    
+    targetX = relativeX * 15; // Reduced from 8 to 15 for subtle effect
+    targetY = relativeY * 15;
   }
   
   function animateAvatar() {
-    const avatar = document.querySelector('.teto-avatar');
     const currentX = parseFloat(avatar.dataset.currentX || 0);
     const currentY = parseFloat(avatar.dataset.currentY || 0);
     
+    // Reset to center when not hovering
+    const finalTargetX = isHovering ? targetX : 0;
+    const finalTargetY = isHovering ? targetY : 0;
+    
     // Smooth interpolation
-    const newX = currentX + (targetX - currentX) * 0.1;
-    const newY = currentY + (targetY - currentY) * 0.1;
+    const newX = currentX + (finalTargetX - currentX) * 0.1;
+    const newY = currentY + (finalTargetY - currentY) * 0.1;
     
     avatar.style.transform = `translate(${newX}px, ${newY}px)`;
     avatar.dataset.currentX = newX;
@@ -151,6 +164,15 @@ function initMouseEffects() {
     
     requestAnimationFrame(animateAvatar);
   }
+  
+  // Only track mouse when hovering over avatar
+  avatar.addEventListener('mouseenter', () => {
+    isHovering = true;
+  });
+  
+  avatar.addEventListener('mouseleave', () => {
+    isHovering = false;
+  });
   
   document.addEventListener('mousemove', updateMousePosition, { passive: true });
   animateAvatar(); // Start the animation loop
