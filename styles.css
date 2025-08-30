@@ -430,6 +430,8 @@ body {
   transform-style: preserve-3d;
 }
 
+/* Find this section in your CSS (around line 443) and replace it with the fixed version below: */
+
 .teto-avatar::before {
   content: '';
   position: absolute;
@@ -442,6 +444,7 @@ body {
   background: linear-gradient(45deg, var(--teto-hot-pink), var(--cyber-purple), var(--teto-magenta)) border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   animation: quantumRing 4s linear infinite;
   z-index: -1;
