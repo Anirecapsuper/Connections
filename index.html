@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Kasane Teto - UTAUloid with drill twin-tails">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kasane Teto's Page</title>
+  <link rel="stylesheet" href="Teto.css">
+</head>
+<body>
+  <!-- Animated Background Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Control Buttons -->
+  <div class="controls">
+    <button class="control-btn theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+      🌙 Dark Mode
+    </button>
+    <button class="control-btn change-theme" onclick="toggleTheme()" aria-label="Change theme">
+      ✨ Theme
+    </button>
+  </div>
+
+  <!-- Hero Header -->
+  <header class="teto-header gradient" id="tetoHeader">
+    <div class="teto-avatar">
+      <img src="images/Avatar.jpeg" alt="Kasane Teto Avatar">          
+    </div>
+    <div class="teto-hero-text">
+      <h1>Kasane Teto</h1>
+      <p>Im a beginner at JavaScript and would like to learn more😁</p>
+    </div>
+  </header> 
+
+  <!-- Site Links Section -->
+  <main>
+    <section class="site-links">
+      <h2>Follow or Support</h2>
+      <div class="links-container">
+        <a href="https://discord.gg/J8B8yZqE77" class="site-link" target="_blank" rel="noopener">
+          💬 Discord
+        </a>
+        <a href="https://www.youtube.com/@Kasane_1eto" class="site-link" target="_blank" rel="noopener">
+          🎵 YouTube
+        </a>
+        <a href="https://www.instagram.com/teto._kasane/" class="site-link" target="_blank" rel="noopener">
+          📸 Instagram
+        </a>
+        <a href="https://x.com/OreoOreo59628" class="site-link" target="_blank" rel="noopener">
+          🐦 Twitter
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Theme management
+    const themes = ["gradient", "solid", "glass"];
+    let currentTheme = 0;
+
+    function toggleTheme() {
+      const header = document.getElementById("tetoHeader");
+      header.classList.remove(...themes);
+      currentTheme = (currentTheme + 1) % themes.length;
+      header.classList.add(themes[currentTheme]);
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const toggleBtn = document.querySelector('.theme-toggle');
+      const isDark = document.body.classList.contains('dark');
+      toggleBtn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+    
+    // Smooth scroll for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      
+      // Add loading animation
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+    
+    // Add parallax effect to header
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.teto-header');
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      header.style.transform = `translateY(${rate}px)`;
+    });
+  </script>  
+</body>
+</html>
