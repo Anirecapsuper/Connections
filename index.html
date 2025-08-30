@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Kasane Teto - UTAUloid Cyberpunk Interface">
+  <meta name="description" content="Kasane Teto - UTAUloid Pink Cyberpunk Interface">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KASANE TETO // CYBER INTERFACE v2.1</title>
+  <title>KASANE TETO // PINK CYBER INTERFACE v2.1</title>
   <style>
 /* ========================
-   Futuristic Kasane Teto Styles
+   Pink Kasane Teto Cyberpunk Theme
 ======================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
@@ -19,19 +19,21 @@
 }
 
 :root {
-  --cyber-pink: #ff0080;
-  --cyber-purple: #8000ff;
-  --cyber-cyan: #00ffff;
-  --cyber-green: #00ff41;
-  --cyber-orange: #ff6600;
-  --neon-blue: #0099ff;
-  --dark-bg: #0a0a0f;
-  --darker-bg: #050508;
-  --grid-color: rgba(0, 255, 255, 0.1);
+  --teto-pink: #ff69b4;
+  --teto-hot-pink: #ff1493;
+  --teto-deep-pink: #c2185b;
+  --teto-light-pink: #ffb3d9;
+  --teto-accent: #ff6ec7;
+  --teto-magenta: #ff00ff;
+  --cyber-purple: #9966cc;
+  --cyber-coral: #ff7f7f;
+  --dark-bg: #0f0a0f;
+  --darker-bg: #080508;
+  --grid-color: rgba(255, 105, 180, 0.15);
   --glow-shadow: 0 0 20px;
   --text-light: #ffffff;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --border-glow: rgba(0, 255, 255, 0.3);
+  --glass-bg: rgba(255, 105, 180, 0.05);
+  --border-glow: rgba(255, 105, 180, 0.4);
 }
 
 body {
@@ -44,7 +46,7 @@ body {
 }
 
 /* ========================
-   Cyberpunk Grid Background
+   Pink Cyberpunk Grid Background
 ======================== */
 .bg-animation {
   position: fixed;
@@ -69,11 +71,11 @@ body {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, var(--cyber-pink) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--cyber-cyan) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, var(--teto-pink) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--teto-hot-pink) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, var(--cyber-purple) 0%, transparent 50%);
-  opacity: 0.05;
-  animation: cyberPulse 8s ease-in-out infinite;
+  opacity: 0.08;
+  animation: pinkPulse 8s ease-in-out infinite;
 }
 
 @keyframes gridMove {
@@ -81,13 +83,13 @@ body {
   100% { background-position: 50px 50px; }
 }
 
-@keyframes cyberPulse {
-  0%, 100% { opacity: 0.05; }
-  50% { opacity: 0.15; }
+@keyframes pinkPulse {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.18; }
 }
 
 /* ========================
-   Enhanced Futuristic Particles
+   Pink Futuristic Particles
 ======================== */
 .particles {
   position: fixed;
@@ -102,14 +104,14 @@ body {
 .particle {
   position: absolute;
   border-radius: 50%;
-  animation: cyberFloat 8s ease-in-out infinite;
+  animation: tetoFloat 8s ease-in-out infinite;
   filter: blur(0.5px);
 }
 
 .particle.pink {
-  background: var(--cyber-pink);
-  box-shadow: var(--glow-shadow) var(--cyber-pink);
-  border: 1px solid var(--cyber-pink);
+  background: var(--teto-pink);
+  box-shadow: var(--glow-shadow) var(--teto-pink);
+  border: 1px solid var(--teto-pink);
 }
 
 .particle.purple {
@@ -119,15 +121,15 @@ body {
 }
 
 .particle.cyan {
-  background: var(--cyber-cyan);
-  box-shadow: var(--glow-shadow) var(--cyber-cyan);
-  border: 1px solid var(--cyber-cyan);
+  background: var(--teto-magenta);
+  box-shadow: var(--glow-shadow) var(--teto-magenta);
+  border: 1px solid var(--teto-magenta);
 }
 
-@keyframes cyberFloat {
+@keyframes tetoFloat {
   0%, 100% { 
     transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.6;
+    opacity: 0.7;
   }
   33% { 
     transform: translateY(-40px) rotate(120deg) scale(1.2);
@@ -135,12 +137,12 @@ body {
   }
   66% { 
     transform: translateY(-20px) rotate(240deg) scale(0.8);
-    opacity: 0.8;
+    opacity: 0.9;
   }
 }
 
 /* ========================
-   Holographic Music Notes
+   Pink Holographic Music Notes
 ======================== */
 .music-notes {
   position: fixed;
@@ -155,13 +157,13 @@ body {
 .music-note {
   position: absolute;
   font-size: 20px;
-  color: var(--cyber-cyan);
-  text-shadow: 0 0 10px var(--cyber-cyan);
-  animation: holoFloat 10s linear infinite;
+  color: var(--teto-pink);
+  text-shadow: 0 0 10px var(--teto-pink);
+  animation: pinkHoloFloat 10s linear infinite;
   font-family: 'Orbitron', monospace;
 }
 
-@keyframes holoFloat {
+@keyframes pinkHoloFloat {
   0% {
     transform: translateY(100vh) rotate(0deg) scale(1);
     opacity: 0;
@@ -169,25 +171,25 @@ body {
   }
   10% { 
     opacity: 1; 
-    filter: hue-rotate(45deg);
+    filter: hue-rotate(30deg);
   }
   50% {
-    filter: hue-rotate(180deg);
+    filter: hue-rotate(60deg);
     transform: translateY(50vh) rotate(180deg) scale(1.5);
   }
   90% { 
     opacity: 1;
-    filter: hue-rotate(315deg);
+    filter: hue-rotate(90deg);
   }
   100% {
     transform: translateY(-100px) rotate(360deg) scale(0.5);
     opacity: 0;
-    filter: hue-rotate(360deg);
+    filter: hue-rotate(120deg);
   }
 }
 
 /* ========================
-   Cyberpunk Control Panel
+   Pink Cyberpunk Control Panel
 ======================== */
 .controls {
   position: fixed;
@@ -201,10 +203,10 @@ body {
 
 .control-btn {
   padding: 15px 25px;
-  border: 2px solid var(--cyber-cyan);
+  border: 2px solid var(--teto-pink);
   border-radius: 0;
-  background: rgba(0, 255, 255, 0.1);
-  color: var(--cyber-cyan);
+  background: rgba(255, 105, 180, 0.1);
+  color: var(--teto-pink);
   font-family: 'Orbitron', monospace;
   font-size: 12px;
   font-weight: 700;
@@ -216,8 +218,8 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 
-    inset 0 0 10px rgba(0, 255, 255, 0.1),
-    0 0 10px rgba(0, 255, 255, 0.2);
+    inset 0 0 10px rgba(255, 105, 180, 0.1),
+    0 0 10px rgba(255, 105, 180, 0.3);
 }
 
 .control-btn::before {
@@ -227,7 +229,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, var(--cyber-cyan), transparent);
+  background: linear-gradient(90deg, transparent, var(--teto-pink), transparent);
   opacity: 0.3;
   transition: left 0.5s;
 }
@@ -239,18 +241,18 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--cyber-cyan), var(--cyber-pink), var(--cyber-purple), var(--cyber-cyan));
+  background: linear-gradient(45deg, var(--teto-pink), var(--teto-hot-pink), var(--cyber-purple), var(--teto-pink));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s;
 }
 
 .control-btn:hover {
-  background: rgba(0, 255, 255, 0.2);
+  background: rgba(255, 105, 180, 0.2);
   box-shadow: 
-    inset 0 0 20px rgba(0, 255, 255, 0.2),
-    0 0 30px var(--cyber-cyan);
-  text-shadow: 0 0 10px var(--cyber-cyan);
+    inset 0 0 20px rgba(255, 105, 180, 0.2),
+    0 0 30px var(--teto-pink);
+  text-shadow: 0 0 10px var(--teto-pink);
   transform: translateX(-5px);
 }
 
@@ -259,47 +261,47 @@ body {
 }
 
 .control-btn:hover::after {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .theme-toggle {
-  border-color: var(--neon-blue);
-  color: var(--neon-blue);
-  background: rgba(0, 153, 255, 0.1);
+  border-color: var(--teto-hot-pink);
+  color: var(--teto-hot-pink);
+  background: rgba(255, 20, 147, 0.1);
 }
 
 .theme-toggle:hover {
   box-shadow: 
-    inset 0 0 20px rgba(0, 153, 255, 0.2),
-    0 0 30px var(--neon-blue);
+    inset 0 0 20px rgba(255, 20, 147, 0.2),
+    0 0 30px var(--teto-hot-pink);
 }
 
 .change-theme {
-  border-color: var(--cyber-pink);
-  color: var(--cyber-pink);
-  background: rgba(255, 0, 128, 0.1);
+  border-color: var(--teto-accent);
+  color: var(--teto-accent);
+  background: rgba(255, 110, 199, 0.1);
 }
 
 .change-theme:hover {
   box-shadow: 
-    inset 0 0 20px rgba(255, 0, 128, 0.2),
-    0 0 30px var(--cyber-pink);
+    inset 0 0 20px rgba(255, 110, 199, 0.2),
+    0 0 30px var(--teto-accent);
 }
 
 .music-toggle {
-  border-color: var(--cyber-green);
-  color: var(--cyber-green);
-  background: rgba(0, 255, 65, 0.1);
+  border-color: var(--cyber-coral);
+  color: var(--cyber-coral);
+  background: rgba(255, 127, 127, 0.1);
 }
 
 .music-toggle:hover {
   box-shadow: 
-    inset 0 0 20px rgba(0, 255, 65, 0.2),
-    0 0 30px var(--cyber-green);
+    inset 0 0 20px rgba(255, 127, 127, 0.2),
+    0 0 30px var(--cyber-coral);
 }
 
 /* ========================
-   Holographic Header
+   Pink Holographic Header
 ======================== */
 .teto-header {
   position: relative;
@@ -310,9 +312,9 @@ body {
   text-align: center;
   padding: 120px 20px 100px;
   background: 
-    linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(128, 0, 255, 0.1)),
-    linear-gradient(45deg, transparent 49%, rgba(0, 255, 255, 0.03) 50%, transparent 51%);
-  border-bottom: 1px solid var(--cyber-cyan);
+    linear-gradient(135deg, rgba(255, 105, 180, 0.15), rgba(153, 102, 204, 0.15)),
+    linear-gradient(45deg, transparent 49%, rgba(255, 105, 180, 0.05) 50%, transparent 51%);
+  border-bottom: 1px solid var(--teto-pink);
   position: relative;
   z-index: 3;
   overflow: hidden;
@@ -326,8 +328,8 @@ body {
   right: 0;
   bottom: 0;
   background: 
-    linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
-    linear-gradient(0deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%);
+    linear-gradient(90deg, transparent 98%, rgba(255, 105, 180, 0.15) 100%),
+    linear-gradient(0deg, transparent 98%, rgba(255, 105, 180, 0.15) 100%);
   background-size: 30px 30px;
   animation: headerGrid 15s linear infinite;
 }
@@ -339,8 +341,8 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-  animation: scanLine 8s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.15), transparent);
+  animation: pinkScanLine 8s ease-in-out infinite;
 }
 
 @keyframes headerGrid {
@@ -348,13 +350,13 @@ body {
   100% { background-position: 30px 30px; }
 }
 
-@keyframes scanLine {
+@keyframes pinkScanLine {
   0%, 100% { left: -100%; }
   50% { left: 100%; }
 }
 
 /* ========================
-   Cyberpunk Avatar with Hologram Effect
+   Pink Cyberpunk Avatar with Hologram Effect
 ======================== */
 .teto-avatar {
   width: 220px;
@@ -362,10 +364,10 @@ body {
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 40px;
-  border: 3px solid var(--cyber-cyan);
+  border: 3px solid var(--teto-pink);
   box-shadow: 
-    0 0 30px var(--cyber-cyan),
-    inset 0 0 30px rgba(0, 255, 255, 0.1);
+    0 0 30px var(--teto-pink),
+    inset 0 0 30px rgba(255, 105, 180, 0.15);
   position: relative;
   z-index: 4;
 }
@@ -377,9 +379,9 @@ body {
   left: -10px;
   right: -10px;
   bottom: -10px;
-  border: 2px solid var(--cyber-pink);
+  border: 2px solid var(--teto-hot-pink);
   border-radius: 50%;
-  animation: holoRing 3s linear infinite;
+  animation: pinkHoloRing 3s linear infinite;
   z-index: -1;
 }
 
@@ -393,21 +395,21 @@ body {
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(0, 255, 255, 0.1) 50%,
+    rgba(255, 105, 180, 0.2) 50%,
     transparent 70%
   );
-  animation: holoScan 4s ease-in-out infinite;
+  animation: pinkHoloScan 4s ease-in-out infinite;
   border-radius: 50%;
 }
 
-@keyframes holoRing {
+@keyframes pinkHoloRing {
   0% { 
     transform: rotate(0deg) scale(1);
     opacity: 1;
   }
   50% {
     transform: rotate(180deg) scale(1.1);
-    opacity: 0.5;
+    opacity: 0.6;
   }
   100% { 
     transform: rotate(360deg) scale(1);
@@ -415,7 +417,7 @@ body {
   }
 }
 
-@keyframes holoScan {
+@keyframes pinkHoloScan {
   0%, 100% { 
     transform: translateY(-100%) rotate(45deg);
     opacity: 0;
@@ -429,21 +431,21 @@ body {
 .teto-avatar:hover {
   transform: scale(1.05);
   box-shadow: 
-    0 0 50px var(--cyber-cyan),
-    0 0 100px var(--cyber-pink),
-    inset 0 0 50px rgba(0, 255, 255, 0.2);
+    0 0 50px var(--teto-pink),
+    0 0 100px var(--teto-hot-pink),
+    inset 0 0 50px rgba(255, 105, 180, 0.25);
 }
 
 .teto-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: contrast(1.2) brightness(1.1);
+  filter: contrast(1.2) brightness(1.1) saturate(1.1);
   transition: all 0.4s ease;
 }
 
 /* ========================
-   Glitch Text Effects
+   Pink Glitch Text Effects
 ======================== */
 .teto-hero-text h1 {
   font-family: 'Orbitron', monospace;
@@ -452,12 +454,12 @@ body {
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--cyber-cyan);
+  color: var(--teto-pink);
   text-shadow: 
-    0 0 10px var(--cyber-cyan),
-    0 0 20px var(--cyber-cyan),
-    0 0 30px var(--cyber-cyan);
-  animation: cyberGlitch 4s ease-in-out infinite;
+    0 0 10px var(--teto-pink),
+    0 0 20px var(--teto-pink),
+    0 0 30px var(--teto-pink);
+  animation: pinkGlitch 4s ease-in-out infinite;
   position: relative;
 }
 
@@ -468,7 +470,7 @@ body {
   left: 2px;
   width: 100%;
   height: 100%;
-  color: var(--cyber-pink);
+  color: var(--teto-hot-pink);
   z-index: -1;
   animation: glitchShift 0.3s infinite linear alternate-reverse;
 }
@@ -485,18 +487,18 @@ body {
   animation: glitchShift 0.4s infinite linear alternate;
 }
 
-@keyframes cyberGlitch {
+@keyframes pinkGlitch {
   0%, 98% { 
     text-shadow: 
-      0 0 10px var(--cyber-cyan),
-      0 0 20px var(--cyber-cyan),
-      0 0 30px var(--cyber-cyan);
+      0 0 10px var(--teto-pink),
+      0 0 20px var(--teto-pink),
+      0 0 30px var(--teto-pink);
   }
   2% { 
     text-shadow: 
-      2px 0 var(--cyber-pink),
+      2px 0 var(--teto-hot-pink),
       -2px 0 var(--cyber-purple),
-      0 0 30px var(--cyber-cyan);
+      0 0 30px var(--teto-pink);
     transform: translate(2px, 0);
   }
 }
@@ -514,35 +516,35 @@ body {
   font-family: 'Rajdhani', monospace;
   font-size: 1.4rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-  animation: textFlicker 6s ease-in-out infinite;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 5px rgba(255, 105, 180, 0.6);
+  animation: pinkFlicker 6s ease-in-out infinite;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-@keyframes textFlicker {
+@keyframes pinkFlicker {
   0%, 95% { opacity: 1; }
-  96% { opacity: 0.5; }
+  96% { opacity: 0.6; }
   97% { opacity: 1; }
-  98% { opacity: 0.7; }
+  98% { opacity: 0.8; }
   99% { opacity: 1; }
 }
 
 /* ========================
-   Cyberpunk Links Interface
+   Pink Cyberpunk Links Interface
 ======================== */
 .site-links {
   max-width: 1000px;
   margin: -50px auto 80px;
   padding: 50px 40px;
-  background: rgba(10, 10, 15, 0.9);
+  background: rgba(15, 10, 15, 0.9);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--cyber-cyan);
+  border: 1px solid var(--teto-pink);
   border-radius: 0;
   box-shadow: 
-    0 0 50px rgba(0, 255, 255, 0.1),
-    inset 0 0 50px rgba(0, 255, 255, 0.05);
+    0 0 50px rgba(255, 105, 180, 0.15),
+    inset 0 0 50px rgba(255, 105, 180, 0.08);
   text-align: center;
   position: relative;
   z-index: 3;
@@ -555,8 +557,8 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--cyber-cyan), transparent);
-  animation: topBorderScan 3s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, var(--teto-pink), transparent);
+  animation: pinkTopScan 3s ease-in-out infinite;
 }
 
 .site-links::after {
@@ -566,16 +568,16 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--cyber-pink), transparent);
-  animation: bottomBorderScan 3s ease-in-out infinite reverse;
+  background: linear-gradient(90deg, transparent, var(--teto-hot-pink), transparent);
+  animation: pinkBottomScan 3s ease-in-out infinite reverse;
 }
 
-@keyframes topBorderScan {
+@keyframes pinkTopScan {
   0%, 100% { transform: translateX(-100%); }
   50% { transform: translateX(100%); }
 }
 
-@keyframes bottomBorderScan {
+@keyframes pinkBottomScan {
   0%, 100% { transform: translateX(100%); }
   50% { transform: translateX(-100%); }
 }
@@ -584,29 +586,29 @@ body {
   font-family: 'Orbitron', monospace;
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: var(--cyber-cyan);
+  color: var(--teto-pink);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 
-    0 0 10px var(--cyber-cyan),
-    0 0 20px var(--cyber-cyan);
-  animation: headerPulse 4s ease-in-out infinite;
+    0 0 10px var(--teto-pink),
+    0 0 20px var(--teto-pink);
+  animation: pinkHeaderPulse 4s ease-in-out infinite;
 }
 
-@keyframes headerPulse {
+@keyframes pinkHeaderPulse {
   0%, 100% { 
     transform: scale(1);
     text-shadow: 
-      0 0 10px var(--cyber-cyan),
-      0 0 20px var(--cyber-cyan);
+      0 0 10px var(--teto-pink),
+      0 0 20px var(--teto-pink);
   }
   50% { 
     transform: scale(1.02);
     text-shadow: 
-      0 0 15px var(--cyber-cyan),
-      0 0 30px var(--cyber-cyan),
-      0 0 40px var(--cyber-pink);
+      0 0 15px var(--teto-pink),
+      0 0 30px var(--teto-pink),
+      0 0 40px var(--teto-hot-pink);
   }
 }
 
@@ -622,7 +624,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px 25px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(20, 5, 20, 0.7);
   color: var(--text-light);
   font-family: 'Rajdhani', monospace;
   font-weight: 600;
@@ -630,14 +632,14 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: 2px solid var(--cyber-cyan);
+  border: 2px solid var(--teto-pink);
   border-radius: 0;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 0 20px rgba(0, 255, 255, 0.2),
-    inset 0 0 20px rgba(0, 255, 255, 0.05);
+    0 0 20px rgba(255, 105, 180, 0.25),
+    inset 0 0 20px rgba(255, 105, 180, 0.08);
 }
 
 .site-link::before {
@@ -647,7 +649,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.3), transparent);
   transition: left 0.5s;
 }
 
@@ -658,29 +660,29 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--cyber-cyan), var(--cyber-pink), var(--cyber-purple), var(--cyber-cyan));
+  background: linear-gradient(45deg, var(--teto-pink), var(--teto-hot-pink), var(--cyber-purple), var(--teto-pink));
   background-size: 400% 400%;
   z-index: -1;
   opacity: 0;
-  animation: gradientShift 3s ease infinite;
+  animation: pinkGradientShift 3s ease infinite;
 }
 
-@keyframes gradientShift {
+@keyframes pinkGradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
 .site-link:hover {
-  background: rgba(0, 255, 255, 0.1);
-  color: var(--cyber-cyan);
-  text-shadow: 0 0 10px var(--cyber-cyan);
+  background: rgba(255, 105, 180, 0.15);
+  color: var(--teto-pink);
+  text-shadow: 0 0 10px var(--teto-pink);
   transform: translateY(-5px) scale(1.02);
   box-shadow: 
-    0 10px 30px rgba(0, 255, 255, 0.3),
-    0 0 50px rgba(0, 255, 255, 0.2),
-    inset 0 0 30px rgba(0, 255, 255, 0.1);
-  border-color: var(--cyber-pink);
+    0 10px 30px rgba(255, 105, 180, 0.35),
+    0 0 50px rgba(255, 105, 180, 0.25),
+    inset 0 0 30px rgba(255, 105, 180, 0.15);
+  border-color: var(--teto-hot-pink);
 }
 
 .site-link:hover::before {
@@ -688,7 +690,7 @@ body {
 }
 
 .site-link:hover::after {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .site-link:active {
@@ -696,68 +698,47 @@ body {
 }
 
 /* ========================
-   Dark Mode Cyberpunk Enhancement
+   Pink Dark Mode Enhancement
 ======================== */
 body.dark {
   background: var(--darker-bg);
 }
 
 body.dark .bg-animation {
-  opacity: 1.5;
+  opacity: 1.2;
 }
 
 body.dark .teto-header {
   background: 
-    linear-gradient(135deg, rgba(255, 0, 128, 0.15), rgba(128, 0, 255, 0.15)),
-    linear-gradient(45deg, transparent 49%, rgba(0, 255, 255, 0.05) 50%, transparent 51%);
+    linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(153, 102, 204, 0.2)),
+    linear-gradient(45deg, transparent 49%, rgba(255, 105, 180, 0.08) 50%, transparent 51%);
 }
 
 /* ========================
-   Theme Variants - Cyberpunk Style
+   Pink Theme Variants
 ======================== */
 .teto-header.solid {
-  background: linear-gradient(135deg, var(--cyber-pink), var(--cyber-purple)) !important;
-  border-bottom: 3px solid var(--cyber-cyan);
+  background: linear-gradient(135deg, var(--teto-pink), var(--cyber-purple)) !important;
+  border-bottom: 3px solid var(--teto-hot-pink);
 }
 
 .teto-header.glass {
-  background: rgba(0, 0, 0, 0.8) !important;
+  background: rgba(20, 5, 20, 0.8) !important;
   backdrop-filter: blur(30px);
-  border: 1px solid var(--cyber-cyan);
-  border-bottom: 3px solid var(--cyber-pink);
+  border: 1px solid var(--teto-pink);
+  border-bottom: 3px solid var(--teto-hot-pink);
 }
 
 .teto-header.neon {
   background: var(--dark-bg) !important;
-  border: 2px solid var(--cyber-cyan);
+  border: 2px solid var(--teto-pink);
   box-shadow: 
-    inset 0 0 50px rgba(0, 255, 255, 0.1),
-    0 0 100px rgba(191, 0, 255, 0.3);
+    inset 0 0 50px rgba(255, 105, 180, 0.15),
+    0 0 100px rgba(255, 20, 147, 0.4);
 }
 
 /* ========================
-   Additional Cyberpunk Effects
-======================== */
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-@keyframes cyberRipple {
-  to {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-@keyframes screenGlitch {
-  0% { left: -100%; opacity: 0; }
-  50% { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
-}
-
-/* ========================
-   Responsive Cyberpunk Design
+   Responsive Pink Design
 ======================== */
 @media (max-width: 768px) {
   .teto-header {
@@ -817,16 +798,16 @@ body.dark .teto-header {
   </style>
 </head>
 <body>
-  <!-- Cyberpunk Grid Background -->
+  <!-- Pink Cyberpunk Grid Background -->
   <div class="bg-animation"></div>
   
-  <!-- Enhanced Particles -->
+  <!-- Enhanced Pink Particles -->
   <div class="particles" id="particles"></div>
   
-  <!-- Holographic Music Notes -->
+  <!-- Pink Holographic Music Notes -->
   <div class="music-notes" id="musicNotes"></div>
 
-  <!-- Cyberpunk Control Panel -->
+  <!-- Pink Cyberpunk Control Panel -->
   <div class="controls">
     <button class="control-btn theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
       🌙 Dark
@@ -839,7 +820,7 @@ body.dark .teto-header {
     </button>
   </div>
 
-  <!-- Holographic Header -->
+  <!-- Pink Holographic Header -->
   <header class="teto-header gradient" id="tetoHeader">
     <div class="teto-avatar">
       <img src="https://i.scdn.co/image/ab67616d00001e023c1cc0037570d0b0b9797b75" alt="Kasane Teto Avatar">          
@@ -850,7 +831,7 @@ body.dark .teto-header {
     </div>
   </header> 
 
-  <!-- Cyberpunk Links Interface -->
+  <!-- Pink Cyberpunk Links Interface -->
   <main>
     <section class="site-links">
       <h2>NETWORK LINKS</h2>
@@ -868,7 +849,7 @@ body.dark .teto-header {
           📸 INSTAGRAM
         </a>
         <a href="https://x.com/OreoOreo59628" class="site-link" target="_blank" rel="noopener">
-          🐦 TWITTER
+          🦋 TWITTER
         </a>
       </div>
     </section>
@@ -876,398 +857,29 @@ body.dark .teto-header {
 
   <script>
 // ========================
-// Futuristic Kasane Teto JavaScript
+// Pink Kasane Teto JavaScript
 // ========================
 
-// Enhanced cyberpunk particles system
+// Enhanced pink cyberpunk particles system
 function createParticles() {
   const particlesContainer = document.getElementById('particles');
   const particleCount = 80;
-  const colors = ['pink', 'purple', 'cyan'];
+  const colors = ['pink', 'purple', 'cyan']; // 'cyan' class now uses magenta
   const sizes = [2, 3, 4, 6];
   
   for (let i = 0; i < particleCount; i++) {
     const particle = document.createElement('div');
-    particle.classList.add('particle', colors[Math.floor(Math.random() * colors.length)]);
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.width = sizes[Math.floor(Math.random() * sizes.length)] + 'px';
-    particle.style.height = particle.style.width;
-    particle.style.animationDelay = Math.random() * 8 + 's';
-    particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
+    const colorClass = colors[Math.floor(Math.random() * colors.length)];
+    const size = sizes[Math.floor(Math.random() * sizes.length)];
     
-    // Add random holographic effects
-    if (Math.random() < 0.3) {
-      particle.style.opacity = '0.3';
-      particle.style.filter = 'blur(1px)';
-    }
+    particle.classList.add('particle', colorClass);
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.animationDuration = `${6 + Math.random() * 6}s`;
+    particle.style.animationDelay = `${Math.random() * 6}s`;
     
     particlesContainer.appendChild(particle);
   }
 }
-
-// Holographic music notes system
-let musicNotesActive = true;
-
-function createMusicNote() {
-  if (!musicNotesActive) return;
-  
-  const musicNotes = ['♪', '♫', '♩', '♬', '🎵', '🎶', '▲', '●', '■', '♦'];
-  const note = document.createElement('div');
-  note.classList.add('music-note');
-  note.textContent = musicNotes[Math.floor(Math.random() * musicNotes.length)];
-  note.style.left = Math.random() * 100 + '%';
-  note.style.animationDuration = (Math.random() * 6 + 8) + 's';
-  note.style.fontSize = (Math.random() * 12 + 16) + 'px';
-  
-  // Random holographic colors
-  const colors = ['#00ffff', '#ff0080', '#8000ff', '#00ff41'];
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  note.style.color = color;
-  note.style.textShadow = `0 0 10px ${color}`;
-  
-  document.getElementById('musicNotes').appendChild(note);
-  
-  setTimeout(() => {
-    note.remove();
-  }, 10000);
-}
-
-function toggleMusic() {
-  musicNotesActive = !musicNotesActive;
-  const btn = document.querySelector('.music-toggle');
-  btn.textContent = musicNotesActive ? '🎵 Audio' : '🔇 Audio';
-  
-  if (!musicNotesActive) {
-    document.getElementById('musicNotes').innerHTML = '';
-  }
-}
-
-// Cyberpunk theme management
-const themes = ["gradient", "solid", "glass", "neon"];
-let currentTheme = 0;
-
-function toggleTheme() {
-  const header = document.getElementById("tetoHeader");
-  header.classList.remove(...themes);
-  currentTheme = (currentTheme + 1) % themes.length;
-  header.classList.add(themes[currentTheme]);
-  
-  // Special cyberpunk effects for neon theme
-  if (themes[currentTheme] === 'neon') {
-    document.body.style.background = '#050508';
-    createHologramScanlines();
-  } else {
-    document.body.style.background = '#0a0a0f';
-    removeHologramScanlines();
-  }
-}
-
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
-  const toggleBtn = document.querySelector('.theme-toggle');
-  const isDark = document.body.classList.contains('dark');
-  toggleBtn.textContent = isDark ? '☀️ Light' : '🌙 Dark';
-}
-
-// Hologram scanline effects
-function createHologramScanlines() {
-  removeHologramScanlines();
-  
-  const scanlines = document.createElement('div');
-  scanlines.id = 'hologramScanlines';
-  scanlines.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1000;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 255, 255, 0.03) 2px,
-      rgba(0, 255, 255, 0.03) 4px
-    );
-    animation: scanlineFlicker 0.15s linear infinite;
-  `;
-  document.body.appendChild(scanlines);
-}
-
-function removeHologramScanlines() {
-  const existing = document.getElementById('hologramScanlines');
-  if (existing) {
-    existing.remove();
-  }
-}
-
-// Enhanced smooth scroll with cyberpunk effects
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-        createScrollGlitch();
-      }
-    });
-  });
-}
-
-// Data stream parallax effect
-function initParallaxEffect() {
-  let ticking = false;
-  
-  function updateParallax() {
-    const header = document.querySelector('.teto-header');
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.3;
-    
-    header.style.transform = `translate3d(0, ${rate}px, 0)`;
-    
-    // Cyberpunk particle effects
-    const particles = document.querySelectorAll('.particle');
-    particles.forEach((particle, index) => {
-      const speed = (index % 4 + 1) * 0.1;
-      const rotation = scrolled * 0.5;
-      particle.style.transform = `translate3d(0, ${scrolled * speed}px, 0) rotate(${rotation}deg)`;
-    });
-    
-    updateDataStreams(scrolled);
-    ticking = false;
-  }
-  
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }
-  
-  window.addEventListener('scroll', requestTick, { passive: true });
-}
-
-// Data streams background effect
-function updateDataStreams(scrollPosition) {
-  const streams = document.querySelectorAll('.data-stream');
-  streams.forEach((stream, index) => {
-    const speed = (index + 1) * 0.02;
-    stream.style.transform = `translateY(${scrollPosition * speed}px)`;
-  });
-}
-
-// Create floating data streams
-function createDataStreams() {
-  const streamCount = 8;
-  const characters = ['0', '1', '▲', '●', '■', '♦', '|', '-', '+', '*'];
-  
-  for (let i = 0; i < streamCount; i++) {
-    const stream = document.createElement('div');
-    stream.classList.add('data-stream');
-    stream.style.cssText = `
-      position: fixed;
-      left: ${Math.random() * 100}%;
-      top: 0;
-      width: 2px;
-      height: 100vh;
-      font-family: monospace;
-      font-size: 12px;
-      color: rgba(0, 255, 255, 0.3);
-      z-index: 1;
-      pointer-events: none;
-    `;
-    
-    let streamContent = '';
-    for (let j = 0; j < 50; j++) {
-      streamContent += characters[Math.floor(Math.random() * characters.length)] + '<br>';
-    }
-    stream.innerHTML = streamContent;
-    
-    document.body.appendChild(stream);
-  }
-}
-
-// Cyberpunk color shifts for particles
-function randomizeParticleColors() {
-  const particles = document.querySelectorAll('.particle');
-  particles.forEach(particle => {
-    if (Math.random() < 0.15) {
-      const colors = ['pink', 'purple', 'cyan'];
-      const currentColors = Array.from(particle.classList).filter(c => colors.includes(c));
-      particle.classList.remove(...currentColors);
-      particle.classList.add(colors[Math.floor(Math.random() * colors.length)]);
-      
-      particle.style.filter = 'blur(2px) hue-rotate(45deg)';
-      setTimeout(() => {
-        particle.style.filter = 'blur(0.5px)';
-      }, 200);
-    }
-  });
-}
-
-// Cyberpunk ripple effects for links
-function initRippleEffects() {
-  document.querySelectorAll('.site-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const ripple = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = e.clientX - rect.left - size / 2;
-      const y = e.clientY - rect.top - size / 2;
-      
-      ripple.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: ${x}px;
-        top: ${y}px;
-        background: radial-gradient(circle, rgba(0,255,255,0.8), transparent);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: cyberRipple 0.8s ease-out;
-        pointer-events: none;
-        box-shadow: 0 0 20px rgba(0,255,255,0.5);
-      `;
-      
-      this.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 800);
-      createScreenGlitch();
-    });
-  });
-}
-
-// Screen glitch effect
-function createScreenGlitch() {
-  const glitch = document.createElement('div');
-  glitch.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,0,128,0.1), transparent);
-    z-index: 9999;
-    pointer-events: none;
-    animation: screenGlitch 0.1s ease-out;
-  `;
-  document.body.appendChild(glitch);
-  
-  setTimeout(() => glitch.remove(), 100);
-}
-
-// Scroll glitch effect
-function createScrollGlitch() {
-  document.body.style.filter = 'hue-rotate(180deg) contrast(1.2)';
-  setTimeout(() => {
-    document.body.style.filter = 'none';
-  }, 50);
-}
-
-// Cyberpunk loading animation
-function initLoadingAnimation() {
-  document.body.style.opacity = '0';
-  document.body.style.filter = 'blur(5px)';
-  
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 1s ease, filter 1s ease';
-    document.body.style.opacity = '1';
-    document.body.style.filter = 'none';
-  }, 200);
-}
-
-// Terminal-style typing effect for header text
-function initTypingEffect() {
-  const heroText = document.querySelector('.teto-hero-text p');
-  if (heroText) {
-    const originalText = heroText.textContent;
-    heroText.textContent = '';
-    
-    let i = 0;
-    const typeWriter = () => {
-      if (i < originalText.length) {
-        heroText.textContent += originalText.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-      } else {
-        heroText.innerHTML += '<span style="animation: blink 1s infinite;">|</span>';
-      }
-    };
-    
-    setTimeout(typeWriter, 1000);
-  }
-}
-
-// Matrix-style background effect
-function createMatrixEffect() {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'matrixCanvas';
-  canvas.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.1;
-    pointer-events: none;
-  `;
-  document.body.appendChild(canvas);
-  
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-  const characters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ♪♫♩♬▲●■♦';
-  const fontSize = 14;
-  const columns = canvas.width / fontSize;
-  const drops = Array(Math.floor(columns)).fill(1);
-  
-  function drawMatrix() {
-    ctx.fillStyle = 'rgba(10, 10, 15, 0.04)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    ctx.fillStyle = '#00ffff';
-    ctx.font = fontSize + 'px monospace';
-    
-    for (let i = 0; i < drops.length; i++) {
-      const text = characters[Math.floor(Math.random() * characters.length)];
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-  }
-  
-  setInterval(drawMatrix, 35);
-}
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  createParticles();
-  createDataStreams();
-  createMatrixEffect();
-  initSmoothScroll();
-  initParallaxEffect();
-  initRippleEffects();
-  initLoadingAnimation();
-  initTypingEffect();
-  
-  setInterval(createMusicNote, 1500);
-  setInterval(randomizeParticleColors, 3000);
-  
-  setInterval(() => {
-    if (Math.random() < 0.1) {
-      createScreenGlitch();
-    }
-  }, 10000);
-});
-  </script>
-</body>
-</html>
