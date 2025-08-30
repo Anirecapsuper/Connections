@@ -16,7 +16,7 @@
   --teto-deep-pink: #c2185b;
   --teto-light-pink: #ffb3d9;
   --teto-accent: #ff6ec7;
-  --cyber-cyan: #40e0d0;
+  --teto-magenta: #ff00ff;
   --cyber-purple: #9966cc;
   --cyber-coral: #ff7f7f;
   --dark-bg: #0f0a0f;
@@ -113,9 +113,9 @@ body {
 }
 
 .particle.cyan {
-  background: var(--teto-hot-pink);
-  box-shadow: var(--glow-shadow) var(--teto-hot-pink);
-  border: 1px solid var(--teto-hot-pink);
+  background: var(--teto-magenta);
+  box-shadow: var(--glow-shadow) var(--teto-magenta);
+  border: 1px solid var(--teto-magenta);
 }
 
 @keyframes tetoFloat {
