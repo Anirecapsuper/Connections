@@ -92,33 +92,68 @@ function initSmoothScroll() {
 
 // Enhanced parallax effect
 function initParallaxEffect() {
-  window.addEventListener('scroll', () => {
+  let ticking = false;
+  
+  function updateParallax() {
     const header = document.querySelector('.teto-header');
     const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.3;
-    header.style.transform = `translateY(${rate}px)`;
+    const rate = scrolled * -0.2; // Reduced intensity for smoother effect
     
-    // Parallax for particles
+    // Use transform3d for hardware acceleration
+    header.style.transform = `translate3d(0, ${rate}px, 0)`;
+    
+    // Smoother parallax for particles with throttling
     const particles = document.querySelectorAll('.particle');
     particles.forEach((particle, index) => {
-      const speed = (index % 3 + 1) * 0.1;
-      particle.style.transform = `translateY(${scrolled * speed}px)`;
+      const speed = (index % 3 + 1) * 0.05; // Reduced speed for smoother effect
+      particle.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
     });
-  });
+    
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  
+  window.addEventListener('scroll', requestTick, { passive: true });
 }
 
 // Mouse interaction effects
 function initMouseEffects() {
-  document.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  
+  function updateMousePosition(e) {
+    mouseX = e.clientX / window.innerWidth;
+    mouseY = e.clientY / window.innerHeight;
+    targetX = (mouseX - 0.5) * 8; // Reduced intensity
+    targetY = (mouseY - 0.5) * 8;
+  }
+  
+  function animateAvatar() {
     const avatar = document.querySelector('.teto-avatar');
-    const moveX = (mouseX - 0.5) * 10;
-    const moveY = (mouseY - 0.5) * 10;
+    const currentX = parseFloat(avatar.dataset.currentX || 0);
+    const currentY = parseFloat(avatar.dataset.currentY || 0);
     
-    avatar.style.transform += ` translate(${moveX}px, ${moveY}px)`;
-  });
+    // Smooth interpolation
+    const newX = currentX + (targetX - currentX) * 0.1;
+    const newY = currentY + (targetY - currentY) * 0.1;
+    
+    avatar.style.transform = `translate(${newX}px, ${newY}px)`;
+    avatar.dataset.currentX = newX;
+    avatar.dataset.currentY = newY;
+    
+    requestAnimationFrame(animateAvatar);
+  }
+  
+  document.addEventListener('mousemove', updateMousePosition, { passive: true });
+  animateAvatar(); // Start the animation loop
 }
 
 // Random color shifts for particles
