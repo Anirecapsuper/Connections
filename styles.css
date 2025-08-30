@@ -1,0 +1,592 @@
+/* ========================
+   Enhanced Kasane Teto Styles
+======================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-pink: #ff6b9d;
+  --secondary-pink: #ff8fab;
+  --accent-pink: #ffb3c6;
+  --primary-purple: #9b59b6;
+  --neon-cyan: #00ffff;
+  --neon-purple: #bf00ff;
+  --text-dark: #2c3e50;
+  --text-light: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-neon: 0 0 20px rgba(191, 0, 255, 0.5);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: var(--text-light);
+  transition: all 0.4s ease;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ========================
+   Animated Background
+======================== */
+.bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 255, 255, 0.2) 0%, transparent 50%);
+  animation: bgPulse 8s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* ========================
+   Enhanced Particles
+======================== */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  filter: blur(0.5px);
+}
+
+.particle.pink {
+  background: radial-gradient(circle, #ff6b9d, #ff8fab);
+  box-shadow: 0 0 10px rgba(255, 107, 157, 0.8);
+}
+
+.particle.purple {
+  background: radial-gradient(circle, #9b59b6, #bf00ff);
+  box-shadow: 0 0 10px rgba(191, 0, 255, 0.8);
+}
+
+.particle.cyan {
+  background: radial-gradient(circle, #00ffff, #40e0d0);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.4; }
+  50% { transform: translateY(-30px) rotate(180deg); opacity: 1; }
+}
+
+/* ========================
+   Music Notes Animation
+======================== */
+.music-notes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.music-note {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  animation: musicFloat 8s linear infinite;
+}
+
+@keyframes musicFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ========================
+   Control Buttons
+======================== */
+.controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.control-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.change-theme {
+  background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+}
+
+.music-toggle {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+}
+
+.control-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.control-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.control-btn:hover::before {
+  left: 100%;
+}
+
+/* ========================
+   Enhanced Header
+======================== */
+.teto-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 100px;
+  background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink), var(--primary-purple));
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  color: var(--text-light);
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.teto-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+  animation: sparkle 15s linear infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes sparkle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ========================
+   Avatar with Enhanced Effects
+======================== */
+.teto-avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 0 0 4px rgba(255, 107, 157, 0.3),
+    0 0 30px rgba(255, 107, 157, 0.6),
+    0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 4;
+}
+
+.teto-avatar::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 107, 157, 0.4), transparent);
+  animation: rotate 3s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.teto-avatar:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 
+    0 0 0 6px rgba(255, 107, 157, 0.5),
+    0 0 50px rgba(255, 107, 157, 0.8),
+    0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.teto-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.teto-avatar:hover img {
+  transform: scale(1.15);
+}
+
+/* ========================
+   Enhanced Text with Glitch Effect
+======================== */
+.teto-hero-text h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 107, 157, 0.7);
+  letter-spacing: -0.02em;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  position: relative;
+}
+
+.teto-hero-text h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: glitch 4s infinite;
+}
+
+@keyframes titleGlow {
+  0% { 
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(255, 107, 157, 0.7);
+  }
+  100% { 
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.3),
+      0 0 50px rgba(0, 255, 255, 0.9);
+  }
+}
+
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+}
+
+.teto-hero-text p {
+  font-size: 1.4rem;
+  opacity: 0.95;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  animation: textFloat 4s ease-in-out infinite;
+}
+
+@keyframes textFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ========================
+   Enhanced Site Links
+======================== */
+.site-links {
+  max-width: 1000px;
+  margin: -50px auto 80px;
+  padding: 70px 40px 50px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.site-links::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-pink), var(--neon-cyan), var(--neon-purple), var(--primary-pink));
+  background-size: 400% 400%;
+  border-radius: 32px;
+  z-index: -1;
+  animation: gradientShift 6s ease infinite;
+  opacity: 0.7;
+}
+
+.site-links h2 {
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  color: var(--text-light);
+  font-weight: 700;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 107, 157, 0.5);
+  animation: headerPulse 3s ease-in-out infinite;
+}
+
+@keyframes headerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.site-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.site-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.site-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+  border-radius: 50%;
+}
+
+.site-link:hover::before {
+  left: 100%;
+}
+
+.site-link:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.site-link:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(255, 107, 157, 0.5);
+  background: linear-gradient(135deg, var(--secondary-pink), var(--neon-purple));
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.site-link:active {
+  transform: translateY(-4px) scale(0.98);
+}
+
+/* ========================
+   Dark Mode Enhancements
+======================== */
+body.dark {
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+}
+
+body.dark .bg-animation {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 150, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(150, 0, 255, 0.2) 0%, transparent 50%);
+}
+
+body.dark .teto-header {
+  background: linear-gradient(135deg, #2c1810, #8b2635, #4a1c40);
+}
+
+body.dark .site-links {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================
+   Theme Variants
+======================== */
+.teto-header.solid {
+  background: var(--primary-pink) !important;
+  animation: none;
+}
+
+.teto-header.glass {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: none;
+}
+
+.teto-header.neon {
+  background: linear-gradient(135deg, #000428, #004e92) !important;
+  box-shadow: 
+    inset 0 0 50px rgba(0, 255, 255, 0.1),
+    0 0 50px rgba(191, 0, 255, 0.3);
+  animation: none;
+}
+
+/* ========================
+   Ripple Animation Keyframe
+======================== */
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ========================
+   Responsive Design
+======================== */
+@media (max-width: 768px) {
+  .teto-header {
+    padding: 100px 20px 80px;
+  }
+  
+  .teto-avatar {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .teto-hero-text h1 {
+    font-size: 2.8rem;
+  }
+  
+  .site-links {
+    margin: -30px 20px 50px;
+    padding: 50px 25px;
+  }
+  
+  .links-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .controls {
+    top: 15px;
+    right: 15px;
+    gap: 10px;
+  }
+  
+  .control-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .teto-hero-text h1 {
+    font-size: 2.2rem;
+  }
+  
+  .site-links h2 {
+    font-size: 2.2rem;
+  }
+  
+  .site-links {
+    margin: -20px 15px 30px;
+    padding: 30px 15px;
+  }
+}

@@ -4,12 +4,19 @@
   <meta charset="UTF-8">
   <meta name="description" content="Kasane Teto - UTAUloid with drill twin-tails">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kasane Teto's Page</title>
-  <link rel="stylesheet" href="Teto.css">
+  <title>Kasane Teto's Page ✨</title>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Animated Background Particles -->
+  <!-- Animated Background -->
+  <div class="bg-animation"></div>
+  
+  <!-- Enhanced Particles -->
   <div class="particles" id="particles"></div>
+  
+  <!-- Music Notes -->
+  <div class="music-notes" id="musicNotes"></div>
 
   <!-- Control Buttons -->
   <div class="controls">
@@ -19,20 +26,23 @@
     <button class="control-btn change-theme" onclick="toggleTheme()" aria-label="Change theme">
       ✨ Theme
     </button>
+    <button class="control-btn music-toggle" onclick="toggleMusic()" aria-label="Toggle music notes">
+      🎵 Notes
+    </button>
   </div>
 
-  <!-- Hero Header -->
+  <!-- Enhanced Header -->
   <header class="teto-header gradient" id="tetoHeader">
     <div class="teto-avatar">
       <img src="https://i.scdn.co/image/ab67616d00001e023c1cc0037570d0b0b9797b75" alt="Kasane Teto Avatar">          
     </div>
     <div class="teto-hero-text">
-      <h1>Kasane Teto</h1>
-      <p>Im a beginner at JavaScript and would like to learn more😁</p>
+      <h1 data-text="Kasane Teto">Kasane Teto</h1>
+      <p>I'm a beginner at JavaScript and would like to learn more 😊✨</p>
     </div>
   </header> 
 
-  <!-- Site Links Section -->
+  <!-- Enhanced Site Links Section -->
   <main>
     <section class="site-links">
       <h2>Follow or Support</h2>
@@ -56,70 +66,6 @@
     </section>
   </main>
 
-  <script>
-    // Create floating particles
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 50;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 6 + 's';
-        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
-        particlesContainer.appendChild(particle);
-      }
-    }
-    
-    // Theme management
-    const themes = ["gradient", "solid", "glass"];
-    let currentTheme = 0;
-
-    function toggleTheme() {
-      const header = document.getElementById("tetoHeader");
-      header.classList.remove(...themes);
-      currentTheme = (currentTheme + 1) % themes.length;
-      header.classList.add(themes[currentTheme]);
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-      const toggleBtn = document.querySelector('.theme-toggle');
-      const isDark = document.body.classList.contains('dark');
-      toggleBtn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-    
-    // Smooth scroll for better UX
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      createParticles();
-      
-      // Add loading animation
-      document.body.style.opacity = '0';
-      setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-      }, 100);
-    });
-    
-    // Add parallax effect to header
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('.teto-header');
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.5;
-      header.style.transform = `translateY(${rate}px)`;
-    });
-  </script>  
+  <script src="script.js"></script>
 </body>
 </html>
