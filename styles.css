@@ -1,5 +1,5 @@
 /* ========================
-   Pink Kasane Teto Cyberpunk Theme
+   Enhanced Pink Kasane Teto Cyberpunk Theme
 ======================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
@@ -38,7 +38,7 @@ body {
 }
 
 /* ========================
-   Pink Cyberpunk Grid Background
+   Enhanced 3D Grid Background with Depth
 ======================== */
 .bg-animation {
   position: fixed;
@@ -53,6 +53,8 @@ body {
     linear-gradient(0deg, transparent 98%, var(--grid-color) 100%);
   background-size: 50px 50px;
   animation: gridMove 20s linear infinite;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .bg-animation::before {
@@ -63,11 +65,26 @@ body {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, var(--teto-pink) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--teto-hot-pink) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, var(--cyber-purple) 0%, transparent 50%);
-  opacity: 0.08;
-  animation: pinkPulse 8s ease-in-out infinite;
+    radial-gradient(ellipse at 20% 80%, var(--teto-pink) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, var(--teto-hot-pink) 0%, transparent 60%),
+    radial-gradient(ellipse at 40% 40%, var(--cyber-purple) 0%, transparent 60%),
+    conic-gradient(from 0deg at 60% 30%, transparent, var(--teto-magenta) 20%, transparent 40%);
+  opacity: 0.12;
+  animation: pinkPulse 8s ease-in-out infinite, rotate3D 30s linear infinite;
+  filter: blur(1px);
+}
+
+.bg-animation::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: repeating-conic-gradient(from 0deg, transparent 0deg, var(--teto-pink) 1deg, transparent 2deg, var(--cyber-purple) 3deg, transparent 4deg);
+  opacity: 0.05;
+  animation: cosmicRotate 60s linear infinite;
+  filter: blur(2px);
 }
 
 @keyframes gridMove {
@@ -76,12 +93,24 @@ body {
 }
 
 @keyframes pinkPulse {
-  0%, 100% { opacity: 0.08; }
-  50% { opacity: 0.18; }
+  0%, 100% { opacity: 0.12; transform: scale(1) rotateZ(0deg); }
+  33% { opacity: 0.18; transform: scale(1.1) rotateZ(120deg); }
+  66% { opacity: 0.15; transform: scale(0.9) rotateZ(240deg); }
+}
+
+@keyframes rotate3D {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes cosmicRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 /* ========================
-   Pink Futuristic Particles
+   Advanced Holographic Particles with Physics
 ======================== */
 .particles {
   position: fixed;
@@ -96,45 +125,60 @@ body {
 .particle {
   position: absolute;
   border-radius: 50%;
-  animation: tetoFloat 8s ease-in-out infinite;
-  filter: blur(0.5px);
+  animation: quantumFloat 12s ease-in-out infinite;
+  filter: blur(0.5px) saturate(1.5);
+  mix-blend-mode: screen;
 }
 
 .particle.pink {
-  background: var(--teto-pink);
-  box-shadow: var(--glow-shadow) var(--teto-pink);
+  background: radial-gradient(circle, var(--teto-pink), var(--teto-hot-pink));
+  box-shadow: 
+    var(--glow-shadow) var(--teto-pink),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
   border: 1px solid var(--teto-pink);
 }
 
 .particle.purple {
-  background: var(--cyber-purple);
-  box-shadow: var(--glow-shadow) var(--cyber-purple);
+  background: radial-gradient(circle, var(--cyber-purple), #6a4c93);
+  box-shadow: 
+    var(--glow-shadow) var(--cyber-purple),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
   border: 1px solid var(--cyber-purple);
 }
 
 .particle.cyan {
-  background: var(--teto-magenta);
-  box-shadow: var(--glow-shadow) var(--teto-magenta);
+  background: radial-gradient(circle, var(--teto-magenta), #00ffff);
+  box-shadow: 
+    var(--glow-shadow) var(--teto-magenta),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
   border: 1px solid var(--teto-magenta);
 }
 
-@keyframes tetoFloat {
+@keyframes quantumFloat {
   0%, 100% { 
-    transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.7;
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+    filter: blur(0.5px) hue-rotate(0deg);
   }
-  33% { 
-    transform: translateY(-40px) rotate(120deg) scale(1.2);
+  25% { 
+    transform: translateY(-60px) translateX(20px) rotate(90deg) scale(1.3);
     opacity: 1;
+    filter: blur(1px) hue-rotate(90deg);
   }
-  66% { 
-    transform: translateY(-20px) rotate(240deg) scale(0.8);
+  50% { 
+    transform: translateY(-30px) translateX(-30px) rotate(180deg) scale(0.7);
     opacity: 0.9;
+    filter: blur(0.3px) hue-rotate(180deg);
+  }
+  75% { 
+    transform: translateY(-80px) translateX(40px) rotate(270deg) scale(1.1);
+    opacity: 1;
+    filter: blur(0.8px) hue-rotate(270deg);
   }
 }
 
 /* ========================
-   Pink Holographic Music Notes
+   3D Holographic Music Notes
 ======================== */
 .music-notes {
   position: fixed;
@@ -144,44 +188,91 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 2;
+  perspective: 1000px;
 }
 
 .music-note {
   position: absolute;
-  font-size: 20px;
+  font-size: 24px;
   color: var(--teto-pink);
-  text-shadow: 0 0 10px var(--teto-pink);
-  animation: pinkHoloFloat 10s linear infinite;
+  text-shadow: 
+    0 0 10px var(--teto-pink),
+    0 0 20px var(--teto-hot-pink),
+    0 0 30px var(--cyber-purple);
+  animation: hologram3DFloat 12s linear infinite;
   font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  transform-style: preserve-3d;
 }
 
-@keyframes pinkHoloFloat {
+@keyframes hologram3DFloat {
   0% {
-    transform: translateY(100vh) rotate(0deg) scale(1);
+    transform: translateY(100vh) translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1);
     opacity: 0;
-    filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg) saturate(1);
   }
   10% { 
     opacity: 1; 
-    filter: hue-rotate(30deg);
+    filter: hue-rotate(45deg) saturate(1.5);
+  }
+  25% {
+    transform: translateY(75vh) translateZ(-100px) rotateX(90deg) rotateY(90deg) scale(1.2);
+    filter: hue-rotate(90deg) saturate(2);
   }
   50% {
-    filter: hue-rotate(60deg);
-    transform: translateY(50vh) rotate(180deg) scale(1.5);
+    transform: translateY(50vh) translateZ(50px) rotateX(180deg) rotateY(180deg) scale(1.8);
+    filter: hue-rotate(180deg) saturate(1.8);
+  }
+  75% {
+    transform: translateY(25vh) translateZ(-50px) rotateX(270deg) rotateY(270deg) scale(1.3);
+    filter: hue-rotate(270deg) saturate(1.3);
   }
   90% { 
     opacity: 1;
-    filter: hue-rotate(90deg);
+    filter: hue-rotate(315deg) saturate(1);
   }
   100% {
-    transform: translateY(-100px) rotate(360deg) scale(0.5);
+    transform: translateY(-100px) translateZ(0px) rotateX(360deg) rotateY(360deg) scale(0.3);
     opacity: 0;
-    filter: hue-rotate(120deg);
+    filter: hue-rotate(360deg) saturate(0.5);
   }
 }
 
 /* ========================
-   Pink Cyberpunk Control Panel
+   Neural Network Lines
+======================== */
+.neural-network {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.neural-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--teto-pink), var(--cyber-purple), transparent);
+  transform-origin: left;
+  animation: neuralPulse 8s ease-in-out infinite;
+}
+
+@keyframes neuralPulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scaleX(0) rotateZ(0deg);
+  }
+  50% { 
+    opacity: 1;
+    transform: scaleX(1) rotateZ(180deg);
+  }
+}
+
+/* ========================
+   Enhanced Cyberpunk Control Panel
 ======================== */
 .controls {
   position: fixed;
@@ -197,7 +288,7 @@ body {
   padding: 15px 25px;
   border: 2px solid var(--teto-pink);
   border-radius: 0;
-  background: rgba(255, 105, 180, 0.1);
+  background: rgba(255, 105, 180, 0.08);
   color: var(--teto-pink);
   font-family: 'Orbitron', monospace;
   font-size: 12px;
@@ -206,12 +297,14 @@ body {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px) saturate(1.5);
   position: relative;
   overflow: hidden;
   box-shadow: 
-    inset 0 0 10px rgba(255, 105, 180, 0.1),
-    0 0 10px rgba(255, 105, 180, 0.3);
+    inset 0 0 20px rgba(255, 105, 180, 0.1),
+    0 0 20px rgba(255, 105, 180, 0.3),
+    0 5px 15px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
 }
 
 .control-btn::before {
@@ -221,9 +314,10 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, var(--teto-pink), transparent);
-  opacity: 0.3;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.8), transparent);
+  opacity: 0.5;
   transition: left 0.5s;
+  filter: blur(1px);
 }
 
 .control-btn::after {
@@ -233,19 +327,32 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--teto-pink), var(--teto-hot-pink), var(--cyber-purple), var(--teto-pink));
+  background: linear-gradient(45deg, var(--teto-pink), var(--teto-hot-pink), var(--cyber-purple), var(--teto-magenta));
+  background-size: 400% 400%;
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s;
+  animation: borderFlow 4s ease infinite;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  25% { background-position: 100% 50%; filter: hue-rotate(90deg); }
+  50% { background-position: 100% 100%; filter: hue-rotate(180deg); }
+  75% { background-position: 0% 100%; filter: hue-rotate(270deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
 }
 
 .control-btn:hover {
   background: rgba(255, 105, 180, 0.2);
   box-shadow: 
-    inset 0 0 20px rgba(255, 105, 180, 0.2),
-    0 0 30px var(--teto-pink);
-  text-shadow: 0 0 10px var(--teto-pink);
-  transform: translateX(-5px);
+    inset 0 0 30px rgba(255, 105, 180, 0.3),
+    0 0 50px var(--teto-pink),
+    0 10px 30px rgba(0, 0, 0, 0.5);
+  text-shadow: 
+    0 0 10px var(--teto-pink),
+    0 0 20px var(--teto-hot-pink);
+  transform: translateX(-8px) translateY(-2px) rotateX(5deg);
 }
 
 .control-btn:hover::before {
@@ -253,7 +360,7 @@ body {
 }
 
 .control-btn:hover::after {
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 .theme-toggle {
@@ -292,88 +399,51 @@ body {
     0 0 30px var(--cyber-coral);
 }
 
-/* ========================
-   Pink Holographic Header
-======================== */
-.teto-header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 20px 100px;
-  background: 
-    linear-gradient(135deg, rgba(255, 105, 180, 0.15), rgba(153, 102, 204, 0.15)),
-    linear-gradient(45deg, transparent 49%, rgba(255, 105, 180, 0.05) 50%, transparent 51%);
-  border-bottom: 1px solid var(--teto-pink);
-  position: relative;
-  z-index: 3;
-  overflow: hidden;
+.quantum-btn {
+  border-color: var(--teto-magenta);
+  color: var(--teto-magenta);
+  background: rgba(255, 0, 255, 0.1);
 }
 
-.teto-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(90deg, transparent 98%, rgba(255, 105, 180, 0.15) 100%),
-    linear-gradient(0deg, transparent 98%, rgba(255, 105, 180, 0.15) 100%);
-  background-size: 30px 30px;
-  animation: headerGrid 15s linear infinite;
-}
-
-.teto-header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.15), transparent);
-  animation: pinkScanLine 8s ease-in-out infinite;
-}
-
-@keyframes headerGrid {
-  0% { background-position: 0 0; }
-  100% { background-position: 30px 30px; }
-}
-
-@keyframes pinkScanLine {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; }
+.quantum-btn:hover {
+  box-shadow: 
+    inset 0 0 20px rgba(255, 0, 255, 0.2),
+    0 0 30px var(--teto-magenta);
 }
 
 /* ========================
-   Pink Cyberpunk Avatar with Hologram Effect
+   Advanced Avatar with Quantum Effects
 ======================== */
 .teto-avatar {
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 40px;
   border: 3px solid var(--teto-pink);
   box-shadow: 
-    0 0 30px var(--teto-pink),
-    inset 0 0 30px rgba(255, 105, 180, 0.15);
+    0 0 40px var(--teto-pink),
+    0 0 80px var(--teto-hot-pink),
+    inset 0 0 40px rgba(255, 105, 180, 0.2);
   position: relative;
   z-index: 4;
+  transform-style: preserve-3d;
 }
 
 .teto-avatar::before {
   content: '';
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 2px solid var(--teto-hot-pink);
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 2px solid transparent;
   border-radius: 50%;
-  animation: pinkHoloRing 3s linear infinite;
+  background: linear-gradient(45deg, var(--teto-hot-pink), var(--cyber-purple), var(--teto-magenta)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: quantumRing 4s linear infinite;
   z-index: -1;
 }
 
@@ -384,48 +454,67 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(255, 105, 180, 0.2) 50%,
-    transparent 70%
-  );
-  animation: pinkHoloScan 4s ease-in-out infinite;
+  background: 
+    conic-gradient(from 0deg, transparent 0deg, rgba(255, 105, 180, 0.3) 90deg, transparent 180deg, rgba(153, 102, 204, 0.3) 270deg, transparent 360deg);
+  animation: holoScan 6s ease-in-out infinite;
   border-radius: 50%;
+  filter: blur(1px);
 }
 
-@keyframes pinkHoloRing {
+@keyframes quantumRing {
   0% { 
     transform: rotate(0deg) scale(1);
     opacity: 1;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+    opacity: 0.8;
+    filter: hue-rotate(90deg);
   }
   50% {
-    transform: rotate(180deg) scale(1.1);
-    opacity: 0.6;
+    transform: rotate(180deg) scale(0.9);
+    opacity: 1;
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.05);
+    opacity: 0.9;
+    filter: hue-rotate(270deg);
   }
   100% { 
     transform: rotate(360deg) scale(1);
     opacity: 1;
+    filter: hue-rotate(360deg);
   }
 }
 
-@keyframes pinkHoloScan {
+@keyframes holoScan {
   0%, 100% { 
-    transform: translateY(-100%) rotate(45deg);
+    transform: translateY(-100%) rotate(0deg);
     opacity: 0;
   }
+  25% {
+    transform: translateY(-50%) rotate(90deg);
+    opacity: 0.7;
+  }
   50% {
-    transform: translateY(100%) rotate(45deg);
+    transform: translateY(0%) rotate(180deg);
     opacity: 1;
+  }
+  75% {
+    transform: translateY(50%) rotate(270deg);
+    opacity: 0.7;
   }
 }
 
 .teto-avatar:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotateY(10deg);
   box-shadow: 
-    0 0 50px var(--teto-pink),
-    0 0 100px var(--teto-hot-pink),
-    inset 0 0 50px rgba(255, 105, 180, 0.25);
+    0 0 60px var(--teto-pink),
+    0 0 120px var(--teto-hot-pink),
+    0 0 180px var(--cyber-purple),
+    inset 0 0 60px rgba(255, 105, 180, 0.3);
 }
 
 .teto-avatar img {
@@ -437,7 +526,7 @@ body {
 }
 
 /* ========================
-   Pink Glitch Text Effects
+   Quantum Glitch Text Effects
 ======================== */
 .teto-hero-text h1 {
   font-family: 'Orbitron', monospace;
@@ -448,60 +537,72 @@ body {
   letter-spacing: 3px;
   color: var(--teto-pink);
   text-shadow: 
-    0 0 10px var(--teto-pink),
-    0 0 20px var(--teto-pink),
-    0 0 30px var(--teto-pink);
-  animation: pinkGlitch 4s ease-in-out infinite;
+    0 0 15px var(--teto-pink),
+    0 0 30px var(--teto-pink),
+    0 0 45px var(--teto-hot-pink);
+  animation: quantumGlitch 6s ease-in-out infinite;
   position: relative;
+  transform-style: preserve-3d;
 }
 
 .teto-hero-text h1::before {
   content: attr(data-text);
   position: absolute;
   top: 0;
-  left: 2px;
+  left: 3px;
   width: 100%;
   height: 100%;
   color: var(--teto-hot-pink);
   z-index: -1;
-  animation: glitchShift 0.3s infinite linear alternate-reverse;
+  animation: glitchWave 0.5s infinite linear alternate-reverse;
+  filter: blur(1px);
 }
 
 .teto-hero-text h1::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
-  left: -2px;
+  left: -3px;
   width: 100%;
   height: 100%;
   color: var(--cyber-purple);
   z-index: -2;
-  animation: glitchShift 0.4s infinite linear alternate;
+  animation: glitchWave 0.7s infinite linear alternate;
+  filter: blur(1px) saturate(1.5);
 }
 
-@keyframes pinkGlitch {
-  0%, 98% { 
+@keyframes quantumGlitch {
+  0%, 94% { 
     text-shadow: 
-      0 0 10px var(--teto-pink),
-      0 0 20px var(--teto-pink),
-      0 0 30px var(--teto-pink);
+      0 0 15px var(--teto-pink),
+      0 0 30px var(--teto-pink),
+      0 0 45px var(--teto-hot-pink);
+    filter: hue-rotate(0deg);
   }
-  2% { 
+  95% { 
     text-shadow: 
-      2px 0 var(--teto-hot-pink),
-      -2px 0 var(--cyber-purple),
-      0 0 30px var(--teto-pink);
-    transform: translate(2px, 0);
+      3px 0 var(--teto-hot-pink),
+      -3px 0 var(--cyber-purple),
+      0 0 45px var(--teto-pink);
+    transform: translate(3px, 0) rotateX(5deg);
+    filter: hue-rotate(180deg) saturate(2);
+  }
+  96% {
+    transform: translate(-2px, 2px) rotateY(5deg);
+    filter: hue-rotate(270deg) contrast(1.5);
+  }
+  97% {
+    transform: translate(2px, -1px) rotateZ(2deg);
+    filter: hue-rotate(90deg) brightness(1.3);
   }
 }
 
-@keyframes glitchShift {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
+@keyframes glitchWave {
+  0% { transform: translate(0) rotateX(0deg); opacity: 0.8; }
+  25% { transform: translate(-3px, 3px) rotateX(2deg); opacity: 1; }
+  50% { transform: translate(3px, -2px) rotateX(-2deg); opacity: 0.9; }
+  75% { transform: translate(-2px, -3px) rotateX(1deg); opacity: 1; }
+  100% { transform: translate(2px, 2px) rotateX(-1deg); opacity: 0.8; }
 }
 
 .teto-hero-text p {
@@ -521,6 +622,74 @@ body {
   97% { opacity: 1; }
   98% { opacity: 0.8; }
   99% { opacity: 1; }
+}
+
+/* ========================
+   Holographic Header Enhancement
+======================== */
+.teto-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 100px;
+  background: 
+    linear-gradient(135deg, rgba(255, 105, 180, 0.18), rgba(153, 102, 204, 0.18)),
+    radial-gradient(ellipse at center, rgba(255, 105, 180, 0.1), transparent),
+    linear-gradient(45deg, transparent 49%, rgba(255, 105, 180, 0.08) 50%, transparent 51%);
+  border-bottom: 2px solid var(--teto-pink);
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.teto-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 97%, rgba(255, 105, 180, 0.2) 100%),
+    linear-gradient(0deg, transparent 97%, rgba(255, 105, 180, 0.2) 100%),
+    radial-gradient(circle at random, var(--teto-pink) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 80px 80px;
+  animation: cosmicGrid 25s linear infinite;
+  opacity: 0.7;
+}
+
+.teto-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.3), rgba(153, 102, 204, 0.2), transparent);
+  animation: dimensionalScan 12s ease-in-out infinite;
+  filter: blur(2px);
+}
+
+@keyframes cosmicGrid {
+  0% { 
+    background-position: 0 0, 0 0, 0 0;
+    filter: hue-rotate(0deg);
+  }
+  100% { 
+    background-position: 40px 40px, 40px 40px, 80px 80px;
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes dimensionalScan {
+  0%, 100% { left: -100%; opacity: 0; }
+  10% { opacity: 1; }
+  50% { left: 0%; opacity: 1; }
+  90% { opacity: 1; }
 }
 
 /* ========================
@@ -611,12 +780,15 @@ body {
   margin-top: 40px;
 }
 
+/* ========================
+   Enhanced Site Links with Depth
+======================== */
 .site-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 25px;
-  background: rgba(20, 5, 20, 0.7);
+  padding: 25px 30px;
+  background: rgba(20, 5, 20, 0.8);
   color: var(--text-light);
   font-family: 'Rajdhani', monospace;
   font-weight: 600;
@@ -630,8 +802,10 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 0 20px rgba(255, 105, 180, 0.25),
-    inset 0 0 20px rgba(255, 105, 180, 0.08);
+    0 0 25px rgba(255, 105, 180, 0.3),
+    inset 0 0 25px rgba(255, 105, 180, 0.1),
+    0 8px 25px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
 }
 
 .site-link::before {
@@ -641,39 +815,61 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.3), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 105, 180, 0.4), 
+    rgba(255, 20, 147, 0.4), 
+    transparent);
+  transition: left 0.6s ease;
+  filter: blur(1px);
 }
 
 .site-link::after {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, var(--teto-pink), var(--teto-hot-pink), var(--cyber-purple), var(--teto-pink));
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: conic-gradient(from 0deg, var(--teto-pink), var(--teto-hot-pink), var(--cyber-purple), var(--teto-magenta), var(--teto-pink));
   background-size: 400% 400%;
   z-index: -1;
   opacity: 0;
-  animation: pinkGradientShift 3s ease infinite;
+  animation: linkBorderPulse 6s ease infinite;
+  border-radius: 0;
 }
 
-@keyframes pinkGradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes linkBorderPulse {
+  0%, 100% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg) saturate(1);
+  }
+  25% {
+    background-position: 100% 50%;
+    filter: hue-rotate(90deg) saturate(1.5);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(180deg) saturate(2);
+  }
+  75% {
+    background-position: 0% 100%;
+    filter: hue-rotate(270deg) saturate(1.5);
+  }
 }
 
 .site-link:hover {
-  background: rgba(255, 105, 180, 0.15);
+  background: rgba(255, 105, 180, 0.2);
   color: var(--teto-pink);
-  text-shadow: 0 0 10px var(--teto-pink);
-  transform: translateY(-5px) scale(1.02);
+  text-shadow: 
+    0 0 15px var(--teto-pink),
+    0 0 30px var(--teto-hot-pink);
+  transform: translateY(-8px) scale(1.05) rotateX(5deg) rotateY(2deg);
   box-shadow: 
-    0 10px 30px rgba(255, 105, 180, 0.35),
-    0 0 50px rgba(255, 105, 180, 0.25),
-    inset 0 0 30px rgba(255, 105, 180, 0.15);
+    0 15px 40px rgba(255, 105, 180, 0.4),
+    0 0 80px rgba(255, 105, 180, 0.3),
+    inset 0 0 40px rgba(255, 105, 180, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.4);
   border-color: var(--teto-hot-pink);
 }
 
@@ -682,11 +878,89 @@ body {
 }
 
 .site-link:hover::after {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .site-link:active {
   transform: translateY(-2px) scale(1);
+}
+
+/* ========================
+   Quantum Loading Animation
+======================== */
+.quantum-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--darker-bg);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.quantum-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-ring {
+  width: 120px;
+  height: 120px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  position: relative;
+  animation: quantumSpin 2s linear infinite;
+}
+
+.loader-ring::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 3px solid var(--teto-pink);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: quantumSpin 1.5s linear infinite reverse;
+}
+
+.loader-ring::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px solid var(--cyber-purple);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  animation: quantumSpin 1s linear infinite;
+}
+
+@keyframes quantumSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ========================
+   Data Streams
+======================== */
+.data-stream {
+  position: fixed;
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  color: rgba(255, 105, 180, 0.2);
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1.5;
+  overflow: hidden;
 }
 
 /* ========================
@@ -730,6 +1004,82 @@ body.dark .teto-header {
 }
 
 /* ========================
+   Additional Animation Keyframes
+======================== */
+@keyframes scanlineFlicker {
+  0%, 98% { opacity: 1; }
+  99% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes quantumRipple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes quantumDistort {
+  0% { 
+    transform: translateX(-100%) skewX(45deg);
+    opacity: 0; 
+  }
+  50% { 
+    transform: translateX(0%) skewX(0deg);
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(100%) skewX(-45deg);
+    opacity: 0; 
+  }
+}
+
+@keyframes dimensionalRift {
+  0% { 
+    width: 0;
+    opacity: 0;
+    transform: scaleY(1);
+  }
+  30% { 
+    width: 200px;
+    opacity: 1;
+    transform: scaleY(3);
+  }
+  60% { 
+    width: 400px;
+    opacity: 0.8;
+    transform: scaleY(1);
+  }
+  100% { 
+    width: 0;
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes riftParticle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes dataFlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes quantumFlicker {
+  0%, 98% { filter: hue-rotate(30deg) saturate(1.3) contrast(1.1); }
+  99% { filter: hue-rotate(60deg) saturate(1.8) contrast(1.5) brightness(1.2); }
+  100% { filter: hue-rotate(30deg) saturate(1.3) contrast(1.1); }
+}
+
+/* ========================
    Responsive Pink Design
 ======================== */
 @media (max-width: 768px) {
@@ -738,13 +1088,13 @@ body.dark .teto-header {
   }
   
   .teto-avatar {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
   
   .teto-hero-text h1 {
-    font-size: 2.5rem;
-    letter-spacing: 1px;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
   }
   
   .site-links {
@@ -775,7 +1125,7 @@ body.dark .teto-header {
 
 @media (max-width: 480px) {
   .teto-hero-text h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .site-links h2 {
@@ -785,5 +1135,10 @@ body.dark .teto-header {
   .site-links {
     margin: -20px 10px 30px;
     padding: 30px 15px;
+  }
+  
+  .teto-avatar {
+    width: 160px;
+    height: 160px;
   }
 }
